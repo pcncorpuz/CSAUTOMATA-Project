@@ -25,11 +25,12 @@ public class AutomataProject {
         System.out.println("Start State is q0");
         for(int c = 0; c<state; c++){
             for(int j = 0; j < symbol; j++){
-                System.out.print("\tδ(q"+c+", "+j+") = ");
                 char x;
-                do{                                                             
+                do{
+                System.out.print("\tδ(q"+c+", "+j+") = ");
+                                                            
                     x = l.nextLine().charAt(1);                                 //expected value is q#, kukunin lang nya yung 2nd letter
-                }while(Character.getNumericValue(x) < symbol);                  //loop para hindi pwede yung lagpas na state number
+                }while(Character.getNumericValue(x) > symbol);                  //loop para hindi pwede yung lagpas na state number
                 a[c].next[j] = a[Character.getNumericValue(x)];                 // q->next = next node 
             }
             if(c!=0){
@@ -60,6 +61,7 @@ public class AutomataProject {
             else
                 System.out.println(strings + " is rejected!");
             System.out.print("Enter another string?[Y/N]: ");
+            again = l.nextLine().charAt(0);
         }while( again == 'y' || again == 'Y');
     }
     
