@@ -25,13 +25,12 @@ public class AutomataProject {
         System.out.println("Start State is q0");
         for(int c = 0; c<state; c++){
             for(int j = 0; j < symbol; j++){
-                char x;
+                int x;
                 do{
-                System.out.print("\tδ(q"+c+", "+j+") = ");
-                                                            
-                    x = l.nextLine().charAt(1);
-                }while(Character.getNumericValue(x) > symbol);
-                a[c].next[j] = a[Character.getNumericValue(x)];
+                System.out.print("\tδ(q"+c+", "+j+") = ");                                        
+                x = Character.getNumericValue(l.nextLine().charAt(1));
+                }while(x > symbol);
+                a[c].next[j] = a[x];
             }
             if(c!=0){
                 char choice;
