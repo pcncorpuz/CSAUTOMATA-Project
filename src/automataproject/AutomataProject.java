@@ -28,7 +28,7 @@ public class AutomataProject {
                 int x;
                 do{
                 System.out.print("\tδ(q"+c+", "+j+") = ");                                        
-                x = Character.getNumericValue(l.nextLine().charAt(1));
+                x = Integer.parseInt(l.nextLine().substring(1));
                 }while(x > symbol);
                 a[c].next[j] = a[x];
             }
