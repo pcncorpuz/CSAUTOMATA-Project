@@ -8,14 +8,27 @@ public class AutomataProject {
 /*                        1st part                                            */
         Scanner s = new Scanner(System.in);
         Scanner l = new Scanner(System.in);
+        int symbol = 0;
         System.out.print("Enter number of symbols: ");
-        int symbol = s.nextInt();
+        do{
+            try{
+                symbol = s.nextInt();
+            }catch(NumberFormatException e){
+                System.out.println("Not a valid number");
+            }
+        }while(symbol==0);
         for(int i = 0; i<symbol; i++)
             System.out.println(i);
         
+        int state = 0;
         System.out.print("Enter number of states: ");
-        int state = s.nextInt();
-        
+        do{
+            try{
+                state = s.nextInt();
+            }catch(NumberFormatException e){
+                System.out.println("Not a valid number");
+            }
+        }while(state==0);
         Node[] a = new Node[state];
         for(int y = 0; y < state; y++){
             a[y] = new Node();
@@ -25,11 +38,15 @@ public class AutomataProject {
         System.out.println("Start State is q0");
         for(int c = 0; c<state; c++){
             for(int j = 0; j < symbol; j++){
-                int x;
-                do{
-                System.out.print("\tδ(q"+c+", "+j+") = ");                                        
-                x = Integer.parseInt(l.nextLine().substring(1));
-                }while(x > symbol);
+                int x = -1;
+                do{ 
+                    try{
+                        System.out.print("\tδ(q"+c+", "+j+") = ");                                        
+                        x = Integer.parseInt(l.nextLine().substring(1));
+                    }catch(NumberFormatException e){
+                        System.out.println("Invalid input.");
+                    }
+                }while(x<0);
                 a[c].next[j] = a[x];
             }
             if(c!=0){
